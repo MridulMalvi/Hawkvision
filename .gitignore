@@ -8,7 +8,7 @@ __pycache__/
 *.db
 uploads/
 processed/
-backend/models/*.pt
+*.pt
 backend/.ultralytics/
 node_modules/
 dist/
