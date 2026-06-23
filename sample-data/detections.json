@@ -1,0 +1,22 @@
+[
+  {
+    "source_type": "video",
+    "source_name": "warehouse-zone-a.mp4",
+    "model_name": "yolov8n",
+    "objects": [
+      { "class_name": "person", "confidence": 0.91 },
+      { "class_name": "forklift", "confidence": 0.84 },
+      { "class_name": "helmet", "confidence": 0.83 }
+    ]
+  },
+  {
+    "source_type": "image",
+    "source_name": "traffic-intersection.jpg",
+    "model_name": "yolov8s",
+    "objects": [
+      { "class_name": "car", "confidence": 0.88 },
+      { "class_name": "truck", "confidence": 0.79 },
+      { "class_name": "person", "confidence": 0.76 }
+    ]
+  }
+]
