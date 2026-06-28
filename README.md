@@ -89,4 +89,3 @@ backend/
 - Ultralytics is AGPL-3.0 licensed. Review its licensing terms before offering a closed-source commercial service.
 - Store uploaded media in object storage such as S3, R2, or Supabase Storage for production.
 
-See [docs/API.md](docs/API.md) and [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
