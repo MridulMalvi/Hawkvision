@@ -15,7 +15,6 @@ import {
 } from "recharts";
 import { Activity, Box, Cpu, TrendingUp } from "lucide-react";
 import { Card } from "../components/ui/Card";
-import { Spinner } from "../components/ui/Spinner";
 import { EmptyState } from "../components/ui/EmptyState";
 import { getAnalytics } from "../services/analytics";
 import { queryKeys } from "../services/queryKeys";

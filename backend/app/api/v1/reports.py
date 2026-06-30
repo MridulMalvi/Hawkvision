@@ -1,22 +1,24 @@
 """Report generation endpoints — CSV, XLSX, and PDF downloads."""
 from fastapi import APIRouter, Depends, Response
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from app.api.deps import get_current_user
 from app.database.session import get_db
+from app.models.detection import Detection
 from app.models.user import User
-from app.repositories.detections import DetectionRepository
-from app.schemas.detection import DetectionQuery
 from app.services.reports import ReportService
 
 router = APIRouter()
 
+_REPORT_LIMIT = 5000
+
 
 def _detections(db: Session, user: User):
-    """Fetch up to 500 detections scoped to the current user (admins see all)."""
-    query = DetectionQuery(page_size=500)
-    owner_id = None if user.role == "admin" else user.id
-    return DetectionRepository(db).list(query, owner_id)[0]
+    """Fetch up to 5000 detections scoped to the current user (admins see all)."""
+    q = db.query(Detection).options(selectinload(Detection.tracked_objects))
+    if user.role != "admin":
+        q = q.filter(Detection.owner_id == user.id)
+    return q.order_by(Detection.created_at.desc()).limit(_REPORT_LIMIT).all()
 
 
 @router.get("/detections.csv")

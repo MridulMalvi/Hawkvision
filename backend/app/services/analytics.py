@@ -5,7 +5,6 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.models.detection import Detection, TrackedObject
-from app.repositories.detections import DetectionRepository
 from app.schemas.analytics import AnalyticsSummary, ClassCount, TrendPoint
 
 
